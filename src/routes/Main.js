@@ -31,6 +31,12 @@ const Main = () => {
     }
   }
 
+  const keyDownHandler = (e) => {
+    if (e.code === 'Enter') {
+      search();
+    }
+  }
+
   return (
     <>
       <MainContent>
@@ -43,7 +49,7 @@ const Main = () => {
           <div>RFC 문서를 제공합니다.</div>
         </SubTitle>
         <SearchArea>
-          <TextField label="RFC 번호를 입력해주세요." variant="outlined" ref={number} onChange={numberHandler} error={!numberValid} inputProps={{maxLength:4}} sx={{backgroundColor:'white', borderRadius:'5px'}}/>
+          <TextField label="RFC 번호를 입력해주세요." variant="outlined" ref={number} onChange={numberHandler} onKeyDown={keyDownHandler} error={!numberValid} inputProps={{maxLength:4}} sx={{backgroundColor:'white', borderRadius:'5px'}}/>
           <Button variant="contained" onClick={search}><FaSearch size={24}/></Button>
         </SearchArea>
       </MainContent>
