@@ -114,14 +114,14 @@ const SubTitle = styled.div`
   height: 12%;
   color: white;
   @media screen and (max-width: 767px) {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 `;
 
 const SearchArea = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 20rem;
+  width: 18rem;
 `;
 
 const SubContent = styled.div`
