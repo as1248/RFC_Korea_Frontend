@@ -5,6 +5,7 @@ import { FaSearch } from "react-icons/fa";
 import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Footer from '../components/Footer';
+import useScrollFadeIn from '../hooks/useScrollFadeIn';
 
 const Main = () => {
   const number = useRef('');
@@ -47,11 +48,11 @@ const Main = () => {
         </SearchArea>
       </MainContent>
       <SubContent>
-        <Info>
+        <Info {...useScrollFadeIn('down',1,0)}>
           <InfoTitle>RFC란?</InfoTitle>
           <InfoDetail>-</InfoDetail>
         </Info>
-        <Info>
+        <Info {...useScrollFadeIn('down',1,0)}>
           <InfoTitle>RFC-Korea</InfoTitle>
           <InfoDetail>-</InfoDetail>
         </Info>
@@ -69,6 +70,9 @@ const MainContent = styled.div`
   align-items: center;
   height: 56rem;
   background-color: #AAD7D9;
+  @media screen and (max-width: 767px) {
+    height: 50rem;
+  }
 `;
 
 const Title = styled.div`
@@ -78,11 +82,19 @@ const Title = styled.div`
   font-size: 4rem;
   font-weight: 600;
   color: white;
+  @media screen and (max-width: 767px) {
+    font-size: 2.5rem;
+    margin: 5rem 0;
+  }
 `;
 
 const Logo = styled.img`
   height: 12rem;
   margin-right: 4rem;
+  @media screen and (max-width: 767px) {
+    height: 6rem;
+    margin-right: 2rem;
+  }
 `;
 
 const SubTitle = styled.div`
@@ -95,6 +107,9 @@ const SubTitle = styled.div`
   font-weight: 500;
   height: 12%;
   color: white;
+  @media screen and (max-width: 767px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const SearchArea = styled.div`
@@ -109,21 +124,33 @@ const SubContent = styled.div`
   align-items: center;
   padding: 8rem;
   background-color: #F9F9FB;
+  @media screen and (max-width: 767px) {
+    padding: 6rem 2rem;
+  }
 `;
 
 const Info = styled.div`
   border: 1px solid black;
   border-radius: 30px;
   padding: 2rem;
-  width: 50rem;
+  width: 45rem;
   margin-bottom: 5rem;
+  @media screen and (max-width: 767px) {
+    width: 100%;
+  }
 `;
 
 const InfoTitle = styled.div`
   font-size: 2rem;
   margin-bottom: 2rem;
+  @media screen and (max-width: 767px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const InfoDetail = styled.div`
   font-size: 1.5rem;
+  @media screen and (max-width: 767px) {
+    font-size: 1rem;
+  }
 `;
