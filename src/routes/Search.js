@@ -43,27 +43,27 @@ const Search = () => {
       {regex.test(num) && num >= 1 && num <=9999 ? (
       <>
         <Header>
-        <Logo onClick={()=>navigate('/')} src={logo}/>
-        <SearchBar>
-          <TextField label="RFC 번호를 입력해주세요." variant="outlined" ref={number} onChange={numberHandler} onKeyDown={keyDownHandler} sx={{width:'25rem', backgroundColor:'white', borderRadius:'5px'}} />
-          <Button variant="contained" onClick={search}><FaSearch size={24}/></Button>
-        </SearchBar>
-      </Header>
-      <Content>
-        <Original>
-          <Title>RFC 원본</Title>
-          <Detail dangerouslySetInnerHTML={{__html: html}}>
-            
-          </Detail>
-        </Original>
-        <Translated>
-          <Title>번역본</Title>
-          <Detail>
-            -
-          </Detail>
-        </Translated>
-      </Content>
-      <Footer/>
+          <Logo onClick={()=>navigate('/')} src={logo}/>
+          <SearchBar>
+            <TextField label="RFC 번호를 입력해주세요." variant="outlined" ref={number} onChange={numberHandler} onKeyDown={keyDownHandler} sx={{width:'25rem', backgroundColor:'white', borderRadius:'5px'}} />
+            <Button variant="contained" onClick={search}><FaSearch size={24}/></Button>
+          </SearchBar>
+        </Header>
+        <Content>
+          <Original>
+            <Title>RFC 원본</Title>
+            <Detail dangerouslySetInnerHTML={{__html: html}}>
+              
+            </Detail>
+          </Original>
+          <Translated>
+            <Title>번역본</Title>
+            <Detail>
+              -
+            </Detail>
+          </Translated>
+        </Content>
+        <Footer/>
       </>
       ) : (
       <>
@@ -77,8 +77,8 @@ const Search = () => {
 export default Search;
 
 const Header = styled.div`
-  display: flex;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
   align-items: center;
   padding: 2rem 0;
   background-color: #AAD7D9;
@@ -87,13 +87,12 @@ const Header = styled.div`
 const Logo = styled.img`
   height: 12rem;
   cursor: pointer;
+  margin-left: 8rem;
 `;
 
 const SearchBar = styled.div`
   display: flex;
-  justify-content: space-between;
-  width: 30rem;
-  margin-left: -25rem;
+  justify-content: center;
 `;
 
 const Content = styled.div`
