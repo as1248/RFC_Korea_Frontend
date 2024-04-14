@@ -47,9 +47,25 @@ table {
 * {
   box-sizing: border-box;
 }
+@font-face {
+    font-family: 'KCC-Hanbit';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2403-2@1.0/KCC-Hanbit.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
 body{
-    font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'KCC-Hanbit', 'Noto Sans KR', sans-serif;
+	overflow: auto;
+  &::-webkit-scrollbar {
+    width: 18px;
+    height: 18px;
+    background: #97E7E1;
   }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+  }
+}
 `;
 
 export default GlobalStyle;
