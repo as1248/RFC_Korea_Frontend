@@ -49,7 +49,7 @@ const Main = () => {
           <div>RFC 문서를 제공합니다.</div>
         </SubTitle>
         <SearchArea>
-          <TextField label="RFC 번호를 입력해주세요." variant="outlined" ref={number} onChange={numberHandler} onKeyDown={keyDownHandler} error={!numberValid} sx={{backgroundColor:'white', borderRadius:'5px'}}/>
+          <TextField label="RFC 번호를 입력해주세요." variant="outlined" ref={number} onChange={numberHandler} onKeyDown={keyDownHandler} sx={{backgroundColor:'white', border:'none', borderRadius:'5px'}}/>
           <Button variant="contained" onClick={search}><FaSearch size={24}/></Button>
         </SearchArea>
       </MainContent>
@@ -120,7 +120,7 @@ const SubTitle = styled.div`
 
 const SearchArea = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   width: 18rem;
 `;
 
