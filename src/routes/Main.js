@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import logo from '../img/logo2.png'
+import logo from '../img/logoWhite2.png'
 import { Button, TextField } from '@mui/material';
 import { FaSearch } from "react-icons/fa";
 import { useRef, useState } from 'react';

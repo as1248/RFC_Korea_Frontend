@@ -1,10 +1,13 @@
 import styled from 'styled-components';
-import logo from '../img/logo1.png'
+import logo from '../img/logoWhite1.png'
+import { useNavigate } from 'react-router-dom';
 
 const Footer = () => {
+  const navigate = useNavigate();
+
   return (
     <Content>
-      <Logo src={logo}/>
+      <Logo src={logo} onClick={()=>navigate('/')}/>
     </Content>
   );
 }
@@ -19,5 +22,9 @@ const Content = styled.div`
 `;
 
 const Logo = styled.img`
+  cursor: pointer;
   height: 12rem;
+  @media screen and (max-width: 767px) {
+    height: 6rem;
+  }
 `;

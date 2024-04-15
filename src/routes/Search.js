@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import logo from '../img/logo1.png';
+import logo from '../img/logoWhite1.png';
 import { useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Button, TextField } from '@mui/material';
