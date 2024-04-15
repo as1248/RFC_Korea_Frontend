@@ -82,12 +82,19 @@ const Header = styled.div`
   align-items: center;
   padding: 2rem 0;
   background-color: #AAD7D9;
+  @media screen and (max-width: 767px) {
+    width: 200vw;
+  }
 `;
 
 const Logo = styled.img`
   height: 12rem;
   cursor: pointer;
   margin-left: 8rem;
+  @media screen and (max-width: 767px) {
+    height: 8rem;
+    margin-left: 2rem;
+  }
 `;
 
 const SearchBar = styled.div`
@@ -100,14 +107,17 @@ const Content = styled.div`
   display: flex;
   justify-content: space-evenly;
   margin: 4rem 0;
+  @media screen and (max-width: 767px) {
+    width: 200vw;
+  }
 `;
 
 const Original = styled.div`
-  width: 35%;
+  width: 40%;
 `;
 
 const Translated = styled.div`
-  width: 35%;
+  width: 40%;
 `;
 
 const Title = styled.div`
