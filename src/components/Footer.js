@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 import logo from '../img/logoWhite1.png'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const Footer = () => {
   const navigate = useNavigate();
+  const {num} = useParams();
 
   return (
-    <Content>
+    <Content num={num}>
       <Logo src={logo} onClick={()=>navigate('/')}/>
     </Content>
   );
@@ -19,6 +20,9 @@ const Content = styled.div`
   align-items: center;
   height: 15rem;
   background-color: #3F3F3F;
+  @media screen and (max-width: 767px) {
+    width: ${(props) => (props?.num ? '200vw' : 'auto')};
+  }
 `;
 
 const Logo = styled.img`
