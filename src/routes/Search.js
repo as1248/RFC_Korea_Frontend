@@ -5,6 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Button, TextField } from '@mui/material';
 import { FaSearch } from "react-icons/fa";
 import Footer from '../components/Footer';
+import WrongNumber from './WrongNumber';
 
 const Search = () => {
   const number = useRef('');
@@ -66,9 +67,8 @@ const Search = () => {
         <Footer/>
       </>
       ) : (
-      <>
-        잘못된 접근
-      </>)}
+        <WrongNumber/>
+      )}
       
     </>
   );
