@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 import logo from '../img/logoWhite1.png';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Button, TextField } from '@mui/material';
 import { FaSearch } from "react-icons/fa";
 import Footer from '../components/Footer';
 import WrongNumber from './WrongNumber';
+import { searchRFC } from '../API/api';
 
 const Search = () => {
   const number = useRef('');
@@ -14,6 +15,8 @@ const Search = () => {
   const navigate = useNavigate();
   const {num} = useParams();
   const regex = /^[0-9]*$/;
+
+  const controller = new AbortController();
   
   const numberHandler = (e) => {
     const value = e.target.value;
@@ -27,6 +30,7 @@ const Search = () => {
 
   const search = () => {
     if(numberValid){
+      controller.abort();
       navigate(`/${number.current}`);
     } else {
       alert('올바른 RFC 번호를 입력해주세요.');
@@ -38,6 +42,10 @@ const Search = () => {
       search();
     }
   }
+
+  useEffect(()=>{
+    searchRFC(controller,num);
+  },[num]);
 
   return (
     <>
