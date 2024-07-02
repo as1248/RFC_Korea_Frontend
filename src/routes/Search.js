@@ -12,6 +12,7 @@ const Search = () => {
   const number = useRef('');
   const [numberValid, setNumberValid] = useState(false);
   const [html, setHtml] = useState(``);
+  const [translatedHtml, setTranslatedHtml] = useState(``);
   const navigate = useNavigate();
   const {num} = useParams();
   const regex = /^[0-9]*$/;
@@ -44,7 +45,7 @@ const Search = () => {
   }
 
   useEffect(()=>{
-    searchRFC(controller,num);
+    searchRFC(controller,num, setHtml, setTranslatedHtml);
   },[num]);
 
   return (
@@ -62,13 +63,11 @@ const Search = () => {
           <Original>
             <Title>RFC 원본</Title>
             <Detail dangerouslySetInnerHTML={{__html: html}}>
-              
             </Detail>
           </Original>
           <Translated>
             <Title>번역본</Title>
-            <Detail>
-              -
+            <Detail dangerouslySetInnerHTML={{__html: translatedHtml}}>
             </Detail>
           </Translated>
         </Content>
@@ -139,6 +138,16 @@ const Detail = styled.div`
   margin-top: 3rem;
   height: 40rem;
   overflow-y: scroll;
+  & > pre{
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+  }
+  & > hr {
+    display: none;
+  }
   &::-webkit-scrollbar {
     width: 15px;
     height: 15px;
