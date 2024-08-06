@@ -1,16 +1,13 @@
 import styled from 'styled-components';
 import logo from '../img/logoWhite1.png';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Button, TextField } from '@mui/material';
-import { FaSearch } from "react-icons/fa";
 import Footer from '../components/Footer';
 import WrongNumber from './WrongNumber';
 import { searchRFC } from '../API/api';
+import SearchBar from '../components/SearchBar';
 
 const Search = () => {
-  const number = useRef('');
-  const [numberValid, setNumberValid] = useState(false);
   const [html, setHtml] = useState(``);
   const [translatedHtml, setTranslatedHtml] = useState(``);
   const navigate = useNavigate();
@@ -18,31 +15,6 @@ const Search = () => {
   const regex = /^[0-9]*$/;
 
   const controller = new AbortController();
-  
-  const numberHandler = (e) => {
-    const value = e.target.value;
-    number.current = value;
-    if(regex.test(value) && value >= 1){
-      setNumberValid(true);
-    }else{
-      setNumberValid(false);
-    }
-  }
-
-  const search = () => {
-    if(numberValid){
-      controller.abort();
-      navigate(`/${number.current}`);
-    } else {
-      alert('올바른 RFC 번호를 입력해주세요.');
-    }
-  }
-
-  const keyDownHandler = (e) => {
-    if (e.code === 'Enter') {
-      search();
-    }
-  }
 
   useEffect(()=>{
     searchRFC(controller,num, setHtml, setTranslatedHtml);
@@ -54,10 +26,7 @@ const Search = () => {
       <>
         <Header>
           <Logo onClick={()=>navigate('/')} src={logo}/>
-          <SearchBar>
-            <TextField label="RFC 번호를 입력해주세요." variant="outlined" ref={number} onChange={numberHandler} onKeyDown={keyDownHandler} sx={{width:'25rem', backgroundColor:'white', borderRadius:'5px'}} />
-            <Button variant="contained" onClick={search}><FaSearch size={24}/></Button>
-          </SearchBar>
+          <SearchBar width={25} controller={controller}/>
         </Header>
         <Content>
           <Original>
@@ -102,11 +71,6 @@ const Logo = styled.img`
     height: 8rem;
     margin-left: 2rem;
   }
-`;
-
-const SearchBar = styled.div`
-  display: flex;
-  justify-content: center;
 `;
 
 const Content = styled.div`
